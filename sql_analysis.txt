@@ -1,0 +1,31 @@
+7. Largest Single-Day Price Drop
+Query: Find the day with the largest single-day price drop based on close price.
+sql
+Code kopieren
+SELECT date, (open - close) AS price_drop
+FROM tesla_stock_data
+WHERE close < open
+ORDER BY price_drop DESC
+LIMIT 1;
+Purpose: Identify the day where Tesla stock saw the most significant loss from open to close.
+
+
+8. Highest Close Price for Each Month
+Query: Identify the highest closing price for each month.
+sql
+Code kopieren
+SELECT DATE_TRUNC('month', date) AS month, MAX(close) AS max_close
+FROM tesla_stock_data
+GROUP BY month
+ORDER BY month;
+Purpose: Track the highest closing price for Tesla stock in each month to identify performance trends.
+
+12. Quarterly Average Close Price
+Query: Calculate the average close price per quarter.
+sql
+Code kopieren
+SELECT DATE_TRUNC('quarter', date) AS quarter, AVG(close) AS avg_close
+FROM tesla_stock_data
+GROUP BY quarter
+ORDER BY quarter;
+Purpose: Analyze Tesla's stock performance on a quarterly basis, often aligning with financial reports.
